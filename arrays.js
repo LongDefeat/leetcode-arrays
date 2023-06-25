@@ -165,6 +165,10 @@ let findMaxSumSubarray = function (nums) {
   let currSum = -Infinity;
   let maxSum = -Infinity;
 
+  if (nums.length < 1) {
+    return 0;
+  }
+
   for (let i = 0; i < nums.length; i++) {
     currSum = Math.max(0, currSum);
     currSum += nums[i];
