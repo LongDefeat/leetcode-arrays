@@ -152,3 +152,23 @@ function reArrange(arr) {
   // push both arrays to arr
   return arr;
 }
+
+/* Maxium Sum Subarray
+
+Given an unsorted array, the maxium sum subarray is the contiguous smaller array wthin the larger array that creates the largest maximum. There may be negative values, but they can still help with linking positive values together to reach the largest maximum
+
+Sample Input: [-4, 2, -5, 1, 2, 3, 6, -5, 1]
+Sample Output: 12
+*/
+
+let findMaxSumSubarray = function (nums) {
+  let currSum = -Infinity;
+  let maxSum = -Infinity;
+
+  for (let i = 0; i < nums.length; i++) {
+    currSum = Math.max(0, currSum);
+    currSum += nums[i];
+    maxSum = Math.max(currSum, maxSum);
+  }
+  return maxSum;
+};
