@@ -203,3 +203,44 @@ var insert = function(intervals, newInterval) {
   return result;
 };
 
+/* Three Sum: given an array of numbers, find three values in the array to equal zero otherwise return empty array */
+var threeSum = function(nums) {
+
+    const results = [];
+    let target = 0;
+
+    if (nums < 3) return results;
+
+    nums = nums.sort((a, b) => a - b);
+
+    for (let i = 0; i < nums.length - 2; i++){
+        if (nums[i] > target) break;
+        if (i > 0 && nums[i] === nums[i - 1]) continue;
+
+        let j = i + 1;
+        let k = nums.length - 1;
+
+        while (j < k) {
+			let sum = nums[i] + nums[j] + nums[k]
+
+			if (sum === target) {
+				results.push([nums[i], nums[j], nums[k]])
+
+				
+				while (nums[j] === nums[j + 1]) j++
+				while (nums[k] === nums[k - 1]) k--
+
+				j++
+				k--
+
+			} else if (sum < target) {
+				j++
+
+			} else { 
+				k--
+			}
+        }
+    }
+    return results;
+};
+
